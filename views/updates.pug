@@ -1,0 +1,16 @@
+doctype html
+html(lang="en")
+    head
+        title #{title}
+        link(rel="stylesheet", href="/css/style.css")
+    body
+        .container
+            a(href="/") Return to the homepage
+            form(method="POST")
+                label(for="name") Name
+                input(type="text" name="name" required)
+                label(for="difficulty") Difficulty
+                input(type="text" name="difficulty" required)
+                label(for="total_time") Total Time
+                input(type="text" name="total_time" required)
+                input(type="submit" value="Submit")

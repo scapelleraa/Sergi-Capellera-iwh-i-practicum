@@ -1,0 +1,26 @@
+doctype html
+html
+    head
+        title  #{title}
+        link(rel="stylesheet", href="/css/style.css")
+    body
+        .container
+            h1 Croquetas recipe book
+            a(href="/update-cobj") Add to this table
+            br
+            if croquetasList.length > 0
+                br
+                table(border="1")
+                    thead
+                        tr
+                            th Name
+                            th Difficulty
+                            th Total time
+                    tbody
+                      each croqueta in croquetasList
+                          tr
+                              td= croqueta.properties.name
+                              td= croqueta.properties.difficulty
+                              td= croqueta.properties.total_time
+            else
+                p No records found.

@@ -9,6 +9,9 @@ body, * {
 h1 {
     margin: 1rem;
 }
+td, th{
+    padding: 10px;
+}
 
 .cards {
     display: flex;
