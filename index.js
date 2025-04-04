@@ -15,6 +15,25 @@ const PRIVATE_APP_ACCESS = process.env.PRIVATE_APP_ACCESS;
 
 // TODO: ROUTE 1 - Create a new app.get route for the homepage to call your custom object data. Pass this data along to the front-end and create a new pug template in the views folder.
 
+app.get('/', async (req, res) => {
+    const call = `https://api.hubapi.com/crm/v3/objects/2-141130435?properties=name,difficulty,total_time`;
+    const headers = {
+        Authorization: `Bearer ${PRIVATE_APP_ACCESS}`,
+        'Content-Type': 'application/json'
+    };
+    try {
+        const resp = await axios.get(call, { headers });
+        const data = resp.data;
+        res.render('homepage', {
+            title: 'Croquetas recipe book',
+            croquetasList: data.results
+        });
+        console.log(data.results)
+
+    } catch (error) {
+        console.error(error);
+    }
+});
 // TODO: ROUTE 2 - Create a new app.get route for the form to create or update new custom object data. Send this data along in the next route.
 
 app.get('/update-cobj', async(req, res) => {
